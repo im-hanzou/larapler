@@ -7,3 +7,4 @@
 - Laravel Scanner (exe) <a href="https://github.com/im-hanzou/Laravel-Scanner"> Here </a>/<a href="https://github.com/im-hanzou/Laravel-Scanner-1"> Mirror </a><br>
 - Laravel Scanner (bash) <a href="https://github.com/im-hanzou/LaravelScanner"> Here </a><br>
 - CannabisLaravelEnv <a href="https://github.com/im-hanzou/CannabisLaravelenv"> Here </a><br>
+<h2>Thanks for the all Tools Creator | Copyright by the all Tools Creator</h2>

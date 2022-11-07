@@ -1,5 +1,7 @@
 # LARAPLER - Laravel Random Exploit 
-<b>Another Exploit</b><br>
+- Requirements : Python2, Python3, PHP-cli, PHP-curl, Bash, Parallel<br>
+- How to Install Parallel check <a href="https://github.com/im-hanzou/wp-listingpro/blob/main/README.md">Here</a><br>
+<h3>Another Exploit</h3>
 - Laravel Debug RCE : <a href="https://github.com/wibuheker/Laravel-RCE"> Here </a><br>
 - Laravel Exploit<a href="https://github.com/im-hanzou/Laravel_Exploit"> Here </a><br>
 - LaCrot <a href="https://github.com/im-hanzou/LaCrot"> Here </a><br>

@@ -35,19 +35,26 @@ curl_close($ch);
         $cookies .= $outCookies.'; ';
     }
     
-    if(preg_match_all("/_session/", $cookies)){
+    if(preg_match_all("/(_session|XSRF-TOKEN)/", $cookies)){
 	    $lines = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 	    if (!in_array($url, $lines)) {
 	    file_put_contents($file, $url . PHP_EOL, FILE_APPEND | LOCK_EX);
 	    }
 	    return json_encode(array("laravel" => TRUE));
+// Sorry i forgot xD
+//    if(preg_match_all("/_session/", $cookies)){
+//	    $lines = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+//	    if (!in_array($url, $lines)) {
+//	    file_put_contents($file, $url . PHP_EOL, FILE_APPEND | LOCK_EX);
+//	    }
+//	    return json_encode(array("laravel" => TRUE));
 
-    }if(preg_match_all("/XSRF-TOKEN/", $cookies)){
-	    $lines = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-	    if (!in_array($url, $lines)) {
-	    file_put_contents($file, $url . PHP_EOL, FILE_APPEND | LOCK_EX);
-	    }
-	    return json_encode(array("laravel" => TRUE));
+//    }if(preg_match_all("/XSRF-TOKEN/", $cookies)){
+//	    $lines = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+//	    if (!in_array($url, $lines)) {
+//	    file_put_contents($file, $url . PHP_EOL, FILE_APPEND | LOCK_EX);
+//	    }
+//	    return json_encode(array("laravel" => TRUE));
 
     }else{
 	    $lines = file('invalid_laravel.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
@@ -58,20 +65,23 @@ curl_close($ch);
     }
 }
 
-echo "Laravel Checker".PHP_EOL;
+echo "Laravel Site Checker".PHP_EOL;
 echo "Created By : Speciment ID".PHP_EOL;
+echo "Fixed By : IM-Hanzou".PHP_EOL;
 echo PHP_EOL;
-echo "Input List : ";
+echo "Input Sitelist : ";
 $list = file_get_contents(trim(fgets(STDIN)));
-echo "Output : ";
+echo "Valid Result Filename : ";
 $output = trim(fgets(STDIN));
 if (!file_exists($output)) {
     touch($output);
 }
 $exp = explode(PHP_EOL, trim($list));
+echo "Invalid Result Filename : invalid_laravel.txt".PHP_EOL;
 
 $i = 1;
 foreach($exp as $site){
 	echo $i.". ".$site." : ".checker($site, $output).PHP_EOL;
 	$i++;
 }
+echo "\nResult saved in $output \n".PHP_EOL;

@@ -78,6 +78,9 @@ if (!file_exists($output)) {
 }
 $exp = explode(PHP_EOL, trim($list));
 echo "Invalid Result Filename : invalid_laravel.txt".PHP_EOL;
+if (!file_exists('invalid_laravel.txt')) {
+    touch('invalid_laravel.txt');
+}
 
 $i = 1;
 foreach($exp as $site){

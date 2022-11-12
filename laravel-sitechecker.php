@@ -1,5 +1,6 @@
 <?php
 // Speciment ID
+// Fixed by im-hanzou
 // With auto delete duplicate line
 // Usage : php laravel.php
 
@@ -34,12 +35,20 @@ curl_close($ch);
         $cookies .= $outCookies.'; ';
     }
     
-    if(preg_match_all("/laravel_session/", $cookies)){
+    if(preg_match_all("/_session/", $cookies)){
 	    $lines = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 	    if (!in_array($url, $lines)) {
 	    file_put_contents($file, $url . PHP_EOL, FILE_APPEND | LOCK_EX);
 	    }
 	    return json_encode(array("laravel" => TRUE));
+
+    }if(preg_match_all("/XSRF-TOKEN/", $cookies)){
+	    $lines = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+	    if (!in_array($url, $lines)) {
+	    file_put_contents($file, $url . PHP_EOL, FILE_APPEND | LOCK_EX);
+	    }
+	    return json_encode(array("laravel" => TRUE));
+
     }else{
 	    $lines = file('invalid_laravel.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 	    if (!in_array($url, $lines)) {

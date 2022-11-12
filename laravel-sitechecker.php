@@ -57,6 +57,9 @@ curl_close($ch);
 //	    return json_encode(array("laravel" => TRUE));
 
     }else{
+	    if (!file_exists('invalid_laravel.txt')) {
+		    touch('invalid_laravel.txt');
+	    }
 	    $lines = file('invalid_laravel.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 	    if (!in_array($url, $lines)) {
 		    file_put_contents('invalid_laravel.txt', $url . PHP_EOL, FILE_APPEND | LOCK_EX);
@@ -78,9 +81,6 @@ if (!file_exists($output)) {
 }
 $exp = explode(PHP_EOL, trim($list));
 echo "Invalid Result Filename : invalid_laravel.txt".PHP_EOL;
-if (!file_exists('invalid_laravel.txt')) {
-    touch('invalid_laravel.txt');
-}
 
 $i = 1;
 foreach($exp as $site){

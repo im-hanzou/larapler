@@ -21,13 +21,13 @@ green='\e[42m'
 target=$1
 thread=$2
 
-if [[ $(curl --silent --connect-timeout 10 --max-time 10 --insecure $target -d '[]') =~ '<td>APP_KEY</td>' || 'APP_KEY' ]]; 
+if [[ $(curl --silent --connect-timeout 10 --max-time 10 --insecure $target -d '[]') =~ '<td>APP_KEY</td>' || $(curl --silent --connect-timeout 10 --max-time 10 --insecure $target -d '[]') =~ 'APP_KEY' ]]; 
 then
     printf "${green}[ Vuln ]${classic} => [ $target | Laravel Debug ] \n";
-    printf "$target" >> vuln.txt
+    printf "$target\n" >> vuln.txt
     else
     printf "${red}[ Not Vuln ]${classic} => $target \n";
-    echo "$target" >> bad.txt
+    echo "$target\n" >> bad.txt
 fi
 }
 

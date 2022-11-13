@@ -27,7 +27,7 @@ then
     printf "$target\n" >> vuln.txt
     else
     printf "${red}[ Not Vuln ]${classic} => $target \n";
-    echo "$target\n" >> bad.txt
+    printf "$target\n" >> bad.txt
 fi
 }
 

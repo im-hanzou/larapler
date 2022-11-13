@@ -27,7 +27,7 @@ then
     printf "$target\n" >> laravel.txt
     else
     printf "${red}[ Not Valid ]${classic} => $target \n";
-    echo "$target\n" >> notlaravel.txt
+    printf "$target\n" >> notlaravel.txt
 fi
 }
 

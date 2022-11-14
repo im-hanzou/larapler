@@ -32,7 +32,7 @@ fi
 }
 
 export -f exploit
-parallel -j $2 exploit :::: $1 
+parallel --no-notice -j $2 exploit :::: $1 
 
 printf "\033[0;36mLaravel Site : laravel.txt\n";
 printf "\033[0;36mNot Laravel Site : notlaravel.txt\n";

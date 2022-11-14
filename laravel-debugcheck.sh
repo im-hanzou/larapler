@@ -31,7 +31,7 @@ then
 fi
 }
 
-export -f exploit
+export --no-notice -f exploit
 parallel -j $2 exploit :::: $1 
 
 printf "\033[0;36mCheck Vuln : vuln.txt\n";

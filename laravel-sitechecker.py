@@ -18,7 +18,7 @@ print(Fore.CYAN + r"""
                                      
 """)
 print(Fore.YELLOW + "Mass Laravel Site Checker\nGithub: im-hanzou\nUsage: python laravel-sitechecker.py list.txt thread\nExample: python laravel-sitechecker.py list.txt 50\n\n")
-Style.RESET_ALL()
+Style.RESET_ALL
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 if sys.platform.startswith('linux'):

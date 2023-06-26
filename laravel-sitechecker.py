@@ -2,7 +2,7 @@
 # Mass Laravel Site Checker
 # Created By Im-Hanzou
 # Using threading for multi-worker
-# Usage: python laravel-sitechecker.py list.txt thread
+# Usage: python file.py list.txt thread
 
 import sys
 import threading
@@ -18,12 +18,11 @@ print(Fore.CYAN + r"""
  |____|\__,_||_|  \__,_| \_/ \___||_|
                                      
 """)
-print(Fore.YELLOW + "Mass Laravel Site Checker\nGithub: im-hanzou\nUsage: python laravel-sitechecker.py list.txt thread\nExample: python laravel-sitechecker.py list.txt 50\n\n")
+print(Fore.YELLOW + "Mass Laravel Site Checker\nGithub: im-hanzou\nUsage: python file.py list.txt thread\nExample: python laravel-sitecheck.py list.txt 50\n\n")
 Style.RESET_ALL
-
 def exploit(target):
-    classic = Style.RESET_ALL
     try:
+        classic = Style.RESET_ALL
         result = requests.get(target, timeout=10, verify=False)
         if 'XSRF-TOKEN' in result.cookies or '_session' in result.cookies:
             print(Fore.GREEN + "[ Valid ]" + classic + " => [ " + target + " | Laravel Site ]")
@@ -37,10 +36,12 @@ def exploit(target):
         print(Fore.RED + "[ Timeout ]" + classic + " => " + target)
     except requests.exceptions.RequestException:
         print(Fore.RED + "[ Connection Error ]" + classic + " => " + target)
+    except:
+        pass
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print("Usage: python laravel-sitechecker.py list.txt thread")
+        print("Usage: python file.py list.txt thread")
         sys.exit(1)
 
     target_file = sys.argv[1]
@@ -68,5 +69,5 @@ with open(laravel_file, 'r') as f:
 with open(notlaravel_file, 'r') as f:
     notlaravel_lines = len(f.readlines())
 
-print(Fore.CYAN + f"Laravel Site: {laravel_file} ({laravel_lines} Sites)")
-print(Fore.CYAN + f"Not Laravel Site: {notlaravel_file} ({notlaravel_lines} Sites)")
+print(Fore.CYAN + f"Laravel Site: {laravel_file} ({laravel_lines} lines)")
+print(Fore.CYAN + f"Not Laravel Site: {notlaravel_file} ({notlaravel_lines} lines)")

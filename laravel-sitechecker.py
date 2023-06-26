@@ -2,7 +2,7 @@
 # Mass Laravel Site Checker
 # Created By Im-Hanzou
 # Using threading for multi-worker
-# Usage: python file.py list.txt thread
+# Usage: python laravel-sitechecker.py list.txt thread
 
 import sys
 import threading
@@ -18,7 +18,7 @@ print(Fore.CYAN + r"""
  |____|\__,_||_|  \__,_| \_/ \___||_|
                                      
 """)
-print(Fore.YELLOW + "Mass Laravel Site Checker\nGithub: im-hanzou\nUsage: python file.py list.txt thread\nExample: python laravel-sitecheck.py list.txt 50\n\n")
+print(Fore.YELLOW + "Mass Laravel Site Checker\nGithub: im-hanzou\nUsage: python laravel-sitechecker.py list.txt thread\nExample: python laravel-sitecheck.py list.txt 50\n\n")
 Style.RESET_ALL
 def exploit(target):
     try:
@@ -41,7 +41,7 @@ def exploit(target):
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print("Usage: python file.py list.txt thread")
+        print("Usage: python laravel-sitechecker.py list.txt thread")
         sys.exit(1)
 
     target_file = sys.argv[1]

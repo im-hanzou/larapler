@@ -41,6 +41,9 @@ def login(url, usr, pwd):
             svwork.close()
         else:
             print('[-] Cant Login {} > {} > {} [-]'.format(url, usr, pwd))
+            svwork = open('cantlogin.txt', 'a')
+            svwork.write(urllog+'|'+usr+'|'+pwd+'\n')
+            svwork.close()
     except Exception:
         print('[*] Cant Access sites > {} [*]'.format(url))
 

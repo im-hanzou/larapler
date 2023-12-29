@@ -32,7 +32,7 @@ def debugbar (star):
         if "PhpDebugBar.DebugBar" in resp:
             print(f"Debugbar {gr}OK{res} => {star}\n")
             mrigel = open("found.txt", "a")
-            mrigel.write(f'{star}\n')
+            mrigel.write(f'{star}/_debugbar/open?method=POST&max=1000&offset=0\n')
         else:
             print(f"{red}Not Found{res} Debugbar => {star}\n")
     except:
